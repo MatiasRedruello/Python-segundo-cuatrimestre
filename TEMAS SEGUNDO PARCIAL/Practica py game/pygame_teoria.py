@@ -67,6 +67,30 @@
 16) Font.get_underline(): Obtiene si el texto está subrayado.
 
 17) Font.get_strikeout(): Obtiene si el texto tiene una línea a través de él.
+--------------------------------------------------------IMAGENES-----------------------------------------------------
+1) pygame.image.load(file_path): Carga una imagen desde un archivo y devuelve una superficie (Surface) que representa la imagen.
+
+2) pygame.image.get_extended(): Comprueba si Pygame ha sido compilado con soporte para formatos de imagen adicionales.
+
+3) pygame.image.save(surface, file_path): Guarda una superficie (Surface) como una imagen en el archivo especificado.
+
+4) pygame.image.get_extended(): Comprueba si Pygame ha sido compilado con soporte para formatos de imagen adicionales.
+
+5) pygame.image.load_extended(file_path): Carga una imagen desde un archivo con soporte para formatos de imagen adicionales.
+
+6) Surface.set_colorkey(color, flags=0): Define un color transparente en una superficie. Cualquier píxel con el mismo color se considerará transparente.
+
+7) Surface.convert(): Crea una nueva superficie con el mismo contenido pero optimizada para el tipo de pantalla actual.
+
+8) Surface.convert_alpha(): Similar a convert(), pero también maneja la transparencia alfa.
+
+9) Surface.subsurface(rect): Devuelve una nueva superficie que es una parte de la superficie original, definida por el rectángulo especificado.
+
+10) pygame.transform.scale(surface, size, dest_surface=None): Escala una superficie a un nuevo tamaño.
+
+11) pygame.transform.rotate(surface, angle): Rota una superficie por el ángulo especificado.
+
+12) pygame.transform.flip(surface, xbool, ybool): Voltea una superficie horizontal o verticalmente según los valores booleanos dados.
 
 """
 # ESTRUCTURA BASICA
