@@ -1,0 +1,40 @@
+{
+    "autos": [
+      {
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "año": 2022,
+        "color": "Blanco",
+        "precio": 25000
+      },
+      {
+        "marca": "Honda",
+        "modelo": "Civic",
+        "año": 2023,
+        "color": "Gris",
+        "precio": 27000
+      },
+      {
+        "marca": "Ford",
+        "modelo": "Mustang",
+        "año": 2022,
+        "color": "Rojo",
+        "precio": 35000
+      },
+      {
+        "marca": "Volkswagen",
+        "modelo": "Golf",
+        "año": 2023,
+        "color": "Azul",
+        "precio": 28000
+      },
+      {
+        "marca": "Chevrolet",
+        "modelo": "Cruze",
+        "año": 2022,
+        "color": "Negro",
+        "precio": 26000
+      }
+    ]
+  }
+  
