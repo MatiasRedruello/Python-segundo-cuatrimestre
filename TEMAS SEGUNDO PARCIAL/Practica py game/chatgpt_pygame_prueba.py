@@ -97,19 +97,3 @@ while running:
 pygame.quit()
 sys.exit()
 
-class Proyectil(pygame.sprite.Sprite):
-    def __init__(self, x, y,bullet_speed,lado):
-        super().__init__()
-        self.image = pygame.transform.scale(bullet_image, (bullet_width, bullet_height))
-        self.rect = self.image.get_rect()
-        self.rect.center = (x+(rect_width//2), y+(rect_height//2))
-        self.speed_x = bullet_speed
-        self.lado = lado
-
-    def do_move(self):
-        if self.lado == "rigth":
-            self.rect.x += self.speed_x
-        elif self.lado == "left":
-            self.rect.x += -self.speed_x        
-    def update(self):
-        self.do_move()
