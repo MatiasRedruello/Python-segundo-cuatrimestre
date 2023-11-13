@@ -9,29 +9,24 @@ screen_heigth = 500
 screen= pygame.display.set_mode((screen_width,screen_heigth))
 pygame.display.set_caption("Figuras geometricas")
 # Colores
-white = (0,0,0)
-black = (255,255,255)
+white = (255,255,255)
+black = (0,0,0)
 red = (255,0,0)
 green = (0,255,0)
 blue = (0,0,255)
 #Reloj
 clock = pygame.time.Clock()
 fps = 60
-#Posicion figuras
-    #ciculos
-circle_x = 0
-circle_y = screen_heigth // 2
-circle_radius = 50
-    # rectangulo
-rect_x = 0
-rect_y = 0
-rect_width = screen_width // 5
-rect_heigth = screen_heigth // 5
-
-# Velocidad de movimiento
-speed = 2
-# Dirección inicial del movimiento (derecha)
-direction = 1
+#propiedades
+x = 0
+y = screen_heigth - 30
+rect_width = 20
+rect_heigth = 20
+rect_speed_x = 5
+rect_speed_y = 0
+gravity = 1
+jumping = True
+jump_cout = 10
 
 
 # Bucle principal
@@ -40,24 +35,55 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    # Borrar pantalla
-    screen.fill(red)
-    # mover posicion del rectangulo
-    rect_x += speed * direction
-    # mover posicion circulo
-    circle_x += speed * direction
-    # Cambiar de sentido al chocar con el borde
-    if rect_x <= 0 or rect_x >= screen_width - rect_width:
-        direction *= -1
+            #detectar la tela
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and not jumping:
+            jumping = True
+    # simular gravedad
+    rect_speed_y += gravity
+    y += rect_speed_y
 
+    # controlar el salto
+    if jumping:
+        jump_cout -= 1
+        y -= jump_cout
+        if jump_cout <= 0:
+            jumping = False
+            jump_cout = 10
+    # Evitar que el rectángulo salga de la parte inferior de la pantalla
+    if y > screen_heigth - rect_heigth:
+        y = screen_heigth - rect_heigth
+        jumping = False
+        jump_count = 10  # Restablece el contador si toca el suelo
+        
+    """
+ ------------------------------------------------------------------------   
+    #Movimiento automatico
+    # Actualizar la posición del cuadrado
+    # tiene que ser condiciones separas no un if-elif
+    
+    # se mueve a la derecha
+    if x >= 0:
+        x += rect_speed_x
+            
+    # Cambiar de dirección al llegar a los bordes de la pantalla 
+    if x <= 0 or x >= screen_width - rect_width:
+        rect_speed_x *= -1
+    # Baja cada vez que choca
+    if x >= screen_width - rect_width or x <= 0:
+        y += rect_speed_y 
+    
+    # tendria que subir
 
-    # dibujar pantalla    
-
-    # Logica del juegos
-    pygame.draw.circle(screen,blue,(circle_x,circle_y),circle_radius,5)
-    pygame.draw.rect(screen,green,(rect_x,rect_y,rect_width,rect_heigth),2)
+    if y >= screen_heigth - rect_heigth:
+        y = 0 
+----------------------------------------------------------------------------        
+    """  
     
 
+    #color pantalla
+    screen.fill(white)
+    # crear figura
+    pygame.draw.rect(screen,red,(x,y,rect_width,rect_heigth))    
     # Actualizar pantalla
     pygame.display.update()
     # Limitar velocidad
