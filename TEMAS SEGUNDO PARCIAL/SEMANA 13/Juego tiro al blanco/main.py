@@ -12,10 +12,10 @@ class Crosshair(pygame.sprite.Sprite):
         self.image = pygame.image.load(picture_path)
         self.rect = self.image.get_rect()  # Obtiene el rectángulo que rodea la imagen
         # Carga el sonido de disparo desde un archivo
-        self.gunshot = pygame.mixer.Sound('shoot.mp3')
+        #self.gunshot = pygame.mixer.Sound('shoot.mp3')
 
     def shoot(self):
-        self.gunshot.play()  # Reproduce el sonido de disparo
+        #self.gunshot.play()  # Reproduce el sonido de disparo
         # Elimina los objetivos que se tocan
         pygame.sprite.spritecollide(crosshair, target_group, True)
 
@@ -49,18 +49,18 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 # Fondo del juego
 # Carga la imagen de fondo desde un archivo
-background = pygame.image.load('BG.png')
+background = pygame.image.load('Juego tiro al blanco/BG.png')
 pygame.mouse.set_visible(False)  # Oculta el cursor del mouse
 
 # Mira del jugador
-crosshair = Crosshair('crosshair.png')  # Crea una instancia de la mira
+crosshair = Crosshair('Juego tiro al blanco/crosshair.png')  # Crea una instancia de la mira
 crosshair_group = pygame.sprite.Group()
 crosshair_group.add(crosshair)  # Agrega la mira al grupo
 
 # Objetivos
 target_group = pygame.sprite.Group()
 for target in range(10):
-    new_target = Target('target.png', random.randrange(
+    new_target = Target('Juego tiro al blanco/target.png', random.randrange(
         0, screen_width), random.randrange(0, screen_height))
     target_group.add(new_target)  # Agrega objetivos al grupo
 

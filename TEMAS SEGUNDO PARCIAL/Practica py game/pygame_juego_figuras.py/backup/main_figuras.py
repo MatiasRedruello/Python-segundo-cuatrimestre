@@ -1,6 +1,6 @@
 import pygame
 import sys
-from clase_proyectil import Proyectil
+
 pygame.init()
 
 # Configuración de la ventana
@@ -20,6 +20,24 @@ rect_color = (0, 0, 255)  # Azul en formato RGB
 rect_width = 50
 rect_height = 50
 
+bullet_image = pygame.image.load('Power/gema_roja.png')
+bullet_width = 30
+bullet_height = 15
+
+class Proyectil(pygame.sprite.Sprite):
+    def __init__(self, x, y,lado):
+        super().__init__()
+        self.image = pygame.transform.scale(bullet_image, (bullet_width, bullet_height))
+        self.rect = self.image.get_rect()
+        self.rect.center = (x+(rect_width//2), y+(rect_height//2))
+        self.speed_x = 5
+        self.lado = lado
+    def update(self):
+        if self.lado == "rigth":
+            self.rect.x += self.speed_x
+        elif self.lado == "left":
+            self.rect.x += -self.speed_x
+
 
 
 # Lista para almacenar los proyectiles
@@ -35,6 +53,12 @@ gravity = 1  # Fuerza de gravedad
 jump_height = 15  # Altura máxima del salto
 
 # Color y dimensiones del proyectil(podria ser propertys de una clase)
+bullet_color = red  # Rojo en formato RGB
+bullet_x = 0
+bullet_y = 0
+bullet_width = 10
+bullet_height = 10
+bullet_speed_x = 0
 
 #clock
 clock = pygame.time.Clock()
@@ -60,12 +84,12 @@ while running_game:
         # Detecta si se preciono la tecla de disparo a la derecha
         if event.type == pygame.KEYDOWN and event.key == pygame.K_d :
             shooting = True
-            nuevo_proyectil = Proyectil(x, y,True)
+            nuevo_proyectil = Proyectil(x, y,"rigth")
             bullets.add(nuevo_proyectil)
         # Detecta si se preciono la tecla de disparo a la izquierda  
         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
             shooting = True
-            nuevo_proyectil = Proyectil(x, y,False)
+            nuevo_proyectil = Proyectil(x, y,"left")
             bullets.add(nuevo_proyectil)            
         
     # Movimiento a la izquierda

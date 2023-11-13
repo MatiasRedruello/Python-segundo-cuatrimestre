@@ -7,14 +7,14 @@ class Jugador:
 
     def __init__(self, coord_x, coord_y, frame_rate = 100, speed_walk = 6, speed_run = 12, gravity = 16, jump = 32):
         # Se guardan los sprites en c/u de los atributos correspondientes
-        self.__iddle_r = sf.get_surface_from_spritesheet('./assets/img/player/iddle/player_idle.png', 5, 1)
-        self.__iddle_l = sf.get_surface_from_spritesheet('./assets/img/player/iddle/player_idle.png', 5, 1, flip=True)
-        self.__walk_r = sf.get_surface_from_spritesheet('./assets/img/player/walk/player_walk.png', 6, 1)
-        self.__walk_l = sf.get_surface_from_spritesheet('./assets/img/player/walk/player_walk.png', 6, 1, flip=True)
-        self.__run_r = sf.get_surface_from_spritesheet('./assets/img/player/run/player_run.png', 2, 1)
-        self.__run_l = sf.get_surface_from_spritesheet('./assets/img/player/run/player_run.png', 2, 1, flip=True)
-        self.__jump_r = sf.get_surface_from_spritesheet('./assets/img/player/jump/player_jump.png', 6, 1)
-        self.__jump_l = sf.get_surface_from_spritesheet('./assets/img/player/jump/player_jump.png', 6, 1, flip=True)
+        self.__iddle_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/iddle/player_idle.png', 5, 1)
+        self.__iddle_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/iddle/player_idle.png', 5, 1, flip=True)
+        self.__walk_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/walk/player_walk.png', 6, 1)
+        self.__walk_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/walk/player_walk.png', 6, 1, flip=True)
+        self.__run_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/run/player_run.png', 2, 1)
+        self.__run_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/run/player_run.png', 2, 1, flip=True)
+        self.__jump_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/jump/player_jump.png', 6, 1)
+        self.__jump_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/jump/player_jump.png', 6, 1, flip=True)
         self.__move_x = coord_x # Coordenada en x(ojo que se puede usar en el movimieno)
         self.__move_y = coord_y # Coordenada en yojo que se puede usar en el movimieno)
         self.__speed_walk = speed_walk # Velodidad con la que camina

@@ -10,7 +10,7 @@ pg.display.set_caption("PyGame DragonBall")# seteo el titulo
 pg.init()# inicio pyga mes
 clock = pg.time.Clock()# creo un reloj
 
-back_img = pg.image.load(r"./assets/img/background/goku_house.png")# Cargo imagen de fondo
+back_img = pg.image.load(r"./Juego principal/img/background/goku_house.png")# Cargo imagen de fondo
 back_img = pg.transform.scale(back_img, (ANCHO_VENTANA, ALTO_VENTANA))#Adapto imagen a la pantalla 
 
 
