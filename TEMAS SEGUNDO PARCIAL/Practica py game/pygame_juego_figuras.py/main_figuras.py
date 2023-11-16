@@ -9,6 +9,9 @@ screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Salto de un Rectángulo')
 
+back_img = pygame.image.load("background\goku_house.png")# Cargo imagen de fondo
+back_img = pygame.transform.scale(back_img, (screen_width, screen_height))#Adapto imagen a la pantalla 
+
 white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
@@ -26,7 +29,7 @@ rect_height = 50
 bullets = pygame.sprite.Group()
 
 # Posición y velocidad inicial del rectángulo(podrian se rpropertys de una clase)
-x = screen_width // 2 - rect_width // 2
+x = 0
 y = screen_height - rect_height
 rect_speed_y = 0  # Velocidad inicial en el eje Y
 rect_speed_x = 10
@@ -92,10 +95,10 @@ while running_game:
     
 
     # Dibujar el fondo
-    screen.fill((255, 255, 255))  # Color blanco como fondo
+    screen.blit(back_img, back_img.get_rect())  # Color blanco como fondo
 
     # Dibujar el rectángulo en su nueva posición
-    pygame.draw.rect(screen, rect_color, (x, y, rect_width, rect_height))
+    pygame.draw.rect(screen, (255,0,0), (x, y, rect_width, rect_height))
     # Actualizar la pantalla
     bullets.update()
     bullets.draw(screen)

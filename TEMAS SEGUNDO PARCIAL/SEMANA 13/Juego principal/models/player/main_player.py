@@ -5,16 +5,16 @@ from models.constantes import ANCHO_VENTANA, DEBUG
 
 class Jugador:
 
-    def __init__(self, coord_x, coord_y, frame_rate = 100, speed_walk = 6, speed_run = 12, gravity = 16, jump = 32):
+    def __init__(self, coord_x, coord_y, frame_rate = 100, speed_walk = 6, speed_run = 12, gravity = 15, jump = 32):
         # Se guardan los sprites en c/u de los atributos correspondientes
-        self.__iddle_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/iddle/player_idle.png', 5, 1)
-        self.__iddle_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/iddle/player_idle.png', 5, 1, flip=True)
-        self.__walk_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/walk/player_walk.png', 6, 1)
-        self.__walk_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/walk/player_walk.png', 6, 1, flip=True)
-        self.__run_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/run/player_run.png', 2, 1)
-        self.__run_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/run/player_run.png', 2, 1, flip=True)
-        self.__jump_r = sf.get_surface_from_spritesheet('./Juego principal/img/player/jump/player_jump.png', 6, 1)
-        self.__jump_l = sf.get_surface_from_spritesheet('./Juego principal/img/player/jump/player_jump.png', 6, 1, flip=True)
+        self.__iddle_r = sf.get_surface_from_spritesheet('./img/player/iddle/player_idle.png', 5, 1)
+        self.__iddle_l = sf.get_surface_from_spritesheet('./img/player/iddle/player_idle.png', 5, 1, flip=True)
+        self.__walk_r = sf.get_surface_from_spritesheet('./img/player/walk/player_walk.png', 6, 1)
+        self.__walk_l = sf.get_surface_from_spritesheet('./img/player/walk/player_walk.png', 6, 1, flip=True)
+        self.__run_r = sf.get_surface_from_spritesheet('./img/player/run/player_run.png', 2, 1)
+        self.__run_l = sf.get_surface_from_spritesheet('./img/player/run/player_run.png', 2, 1, flip=True)
+        self.__jump_r = sf.get_surface_from_spritesheet('./img/player/jump/player_jump.png', 6, 1)
+        self.__jump_l = sf.get_surface_from_spritesheet('./img/player/jump/player_jump.png', 6, 1, flip=True)
         self.__move_x = coord_x # Coordenada en x(ojo que se puede usar en el movimieno)
         self.__move_y = coord_y # Coordenada en yojo que se puede usar en el movimieno)
         self.__speed_walk = speed_walk # Velodidad con la que camina
@@ -57,10 +57,9 @@ class Jugador:
         Descripcion:
         Controla si esta saltando y en que direccion lo hace
         """        
-        self.__move_y = -self.__jump # En la y resto pixeles. Ej si mi personaje salta
+        self.__move_y += -self.__jump # En la y resto pixeles. Ej si mi personaje salta
         self.__move_x = self.__speed_run if self.__is_looking_right else -self.__speed_run
         self.__actual_animation = self.__jump_r if self.__is_looking_right else self.__jump_l
-        
         self.__is_jumping = True
     
     def walk(self, direction: str = 'Right'):
@@ -133,10 +132,12 @@ class Jugador:
         if self.__player_move_time >= self.__frame_rate: # esto quiere dicr que ya estamos en un tiempo produnte para realizar un movimiento
             self.__player_move_time = 0 # reinicio
             self.__rect.x += self.__set_borders_limits()#le sumo los pixeles al rectangulo de mi imagen hasta que choque contra los bordes
-            self.__rect.y += self.__move_y # cin la i no seria necesario porque tengo que limitar el salto
+            self.__rect.y += 10 # cin la i no seria necesario porque tengo que limitar el salto
             # Parte relacionado a saltar
             if self.__rect.y < 300:
                 self.__rect.y += self.__gravity
+
+              
 
     def do_animation(self, delta_ms):
         """
