@@ -60,7 +60,7 @@ class Jugador:
         self.__move_y = -self.__jump # En la y resto pixeles. Ej si mi personaje salta
         self.__move_x = self.__speed_run if self.__is_looking_right else -self.__speed_run
         self.__actual_animation = self.__jump_r if self.__is_looking_right else self.__jump_l
-        self.__initial_frame = 0
+        
         self.__is_jumping = True
     
     def walk(self, direction: str = 'Right'):

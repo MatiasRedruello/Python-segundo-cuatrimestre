@@ -1,11 +1,11 @@
 import pygame
 
 
-bullet_image = pygame.image.load('Power/gema_roja.png')
-bullet_width = 15
-bullet_height = 15
-rect_width =50
-rect_height = 50
+bullet_image = pygame.image.load('Power/player_laser.png')#si json
+bullet_width = 50#si json
+bullet_height = 15#si json
+rect_width =50# en este caso es del cuadrado del personaje
+rect_height = 50## en este caso es del cuadrado del personaje
 
 class Proyectil(pygame.sprite.Sprite):
     def __init__(self, x, y, lado= True):

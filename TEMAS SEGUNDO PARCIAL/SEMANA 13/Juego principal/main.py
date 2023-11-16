@@ -43,7 +43,6 @@ while juego_ejecutandose:
         vegeta.walk('Left')
     if not lista_teclas_presionadas[pg.K_RIGHT] and not lista_teclas_presionadas[pg.K_LEFT]:# si no toco derecha o izquierda
         vegeta.stay()
-    
     if lista_teclas_presionadas[pg.K_RIGHT] and lista_teclas_presionadas[pg.K_LSHIFT] and not lista_teclas_presionadas[pg.K_LEFT]:
         #Si toco deerecha y shift y no izqui erda
         vegeta.run('Right')
